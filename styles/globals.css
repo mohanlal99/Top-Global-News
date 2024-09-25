@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add this in your global CSS file */
+::-webkit-scrollbar {
+  width: 1px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a0a0a0; /* Color of the scrollbar */
+  border-radius: 1px; /* Rounded edges for the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Change color on hover */
+}
+
+header {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}

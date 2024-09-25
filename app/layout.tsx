@@ -1,22 +1,84 @@
 import "@/styles/globals.css";
-import { Metadata, Viewport } from "next";
-import { Link } from "@nextui-org/link";
 import clsx from "clsx";
+import { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 import { Providers } from "./providers";
 
+import AnalyticsWrapper from "@/components/AnalyticsWrapper";
+import { inter } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
-import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
+    default: siteConfig.title,
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: siteConfig.keywords,
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    images: [
+      {
+        url: `${siteConfig.url}${siteConfig.image}`,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@TopGlobalNews", // Optional: your Twitter handle
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [`${siteConfig.url}${siteConfig.image}`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    "max-snippet": -1,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
+  },
+  alternates: {
+    canonical: siteConfig.url,
+    languages: {
+      en: siteConfig.url,
+    },
+  },
+  // Structured data for search engines (JSON-LD schema)
+  other: {
+    "application/ld+json": JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "NewsMediaOrganization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: `${siteConfig.url}/logo.png`,
+      sameAs: [
+        "https://www.facebook.com/",
+        "https://twitter.com/",
+        "https://www.linkedin.com/",
+      ],
+      description: siteConfig.description,
+      genre: "General",
+      keywords: siteConfig.keywords.split(",").map((word) => word.trim()),
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${siteConfig.url}/search?query={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    }),
+    "google-adsense-account": "ca-pub-7921236606850510",
   },
 };
 
@@ -35,29 +97,18 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head />
+
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
+          inter.className
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
-            <Navbar />
-            <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-              {children}
+            <main className="container mx-auto max-w-7xl flex-grow">
+              <AnalyticsWrapper> {children} </AnalyticsWrapper>
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                title="nextui.org homepage"
-              >
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">NextUI</p>
-              </Link>
-            </footer>
           </div>
         </Providers>
       </body>
