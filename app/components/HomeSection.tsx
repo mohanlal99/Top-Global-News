@@ -8,6 +8,7 @@ import { SunFilledIcon } from "@/components/icons";
 const HomeSection: React.FC<{ news: NewsSchemaType }> = ({ news }) => {
   const date = new Date();
   const hours = date.getHours();
+
   return (
     <section className="flex justify-between  text-nowrap items-start font-serif md:items-center px-2 py-1 border-b">
       <div className="flex items-center gap-3">

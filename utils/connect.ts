@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
 export const Connect = async (): Promise<void> => {
-  const MONGO_URI = process.env.MONGO_URI;
+  const MONGO_URI = process.env.MONGO_URI!;
 
   if (!MONGO_URI) {
     return;

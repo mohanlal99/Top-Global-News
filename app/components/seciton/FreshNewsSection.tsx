@@ -42,18 +42,18 @@ const FreshNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({ news }) => {
           <Link
             key={index}
             className="text-sm "
-            href={`/news/${item.category}/${item.slug}`}
+            href={`/news/${item?.category}/${item?.slug}`}
           >
             <div className="grid grid-cols-3 gap-2 hover:shadow-lg dark:bg-gray-900 bg-default-300 rounded-md p-2 pt-3">
               <Image
                 removeWrapper
-                alt={item.title}
+                alt={item?.title}
                 className="w-32 h-auto  rounded-md object-cover mb-2"
                 height={60}
-                src={item.imageUrl || "/tgnews.png"}
+                src={item?.imageUrl || "/tgnews.png"}
               />
               <h3 className="text-sm col-span-2 mb-1 line-clamp-3 h-fit">
-                {item.title}
+                {item?.title}
               </h3>
             </div>
           </Link>

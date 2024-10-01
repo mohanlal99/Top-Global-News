@@ -1,7 +1,7 @@
 import React from "react";
 
-import BusinessNewsSection from "./seciton/BusinessNewsSection";
 import InidaNewsSection from "./seciton/InidaNewsSection";
+import BusinessNewsSection from "./seciton/BusinessNewsSection";
 import WorldNewsTabs from "./seciton/WorldNewsTabs";
 import EducationNewsSection from "./seciton/EducationNewsSection";
 
@@ -16,10 +16,10 @@ const NewsSection: React.FC<{
   return (
     <div className="flex flex-col gap-3 lg:gap-6  ">
       {/* India News Section  */}
-      <InidaNewsSection news={news.india} />
-      <BusinessNewsSection news={news.business} />
+      <InidaNewsSection news={news?.india} />
+      <BusinessNewsSection news={news?.business} />
       <WorldNewsTabs news={news} />
-      <EducationNewsSection news={news.education} />
+      <EducationNewsSection news={news?.education} />
       {/* Cricket News Section  */}
     </div>
   );

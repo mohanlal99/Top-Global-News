@@ -1,16 +1,17 @@
 "use client";
-import React, { useState } from "react";
-import { Card, Image } from "@nextui-org/react";
-import { Trash2 } from "lucide-react";
 import { Button } from "@nextui-org/button";
 import {
+  Card,
+  Image,
   Modal,
-  ModalContent,
-  ModalHeader,
   ModalBody,
+  ModalContent,
   ModalFooter,
+  ModalHeader,
   useDisclosure,
 } from "@nextui-org/react";
+import { Trash2 } from "lucide-react";
+import React, { useState } from "react";
 
 import { deleteNewsById } from "./AdminApi";
 

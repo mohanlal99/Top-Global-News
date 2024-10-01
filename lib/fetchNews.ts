@@ -26,7 +26,11 @@ export const fetchAllNews = async (): Promise<{
   for (const category of categories) {
     const news = await fetchNewsByCategory(category);
 
-    newsData[category] = news || [];
+    if (!news || news.length === 0) {
+      newsData[category] = []; // Ensure no undefined categories
+    } else {
+      newsData[category] = news;
+    }
   }
 
   return newsData;

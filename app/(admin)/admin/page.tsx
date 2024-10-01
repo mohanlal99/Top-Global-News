@@ -1,5 +1,6 @@
 import AdminDashBoard from "./components/AdminDashBoard";
 
+import ProfilePage from "@/app/(auth)/profile/components/ProfilePage";
 import Loader from "@/components/Loader";
 import { fetchAllNews } from "@/lib/fetchNews";
 
@@ -8,5 +9,10 @@ export default async function Admin() {
 
   if (!news || Object.keys(news).length === 0) return <Loader />;
 
-  return <AdminDashBoard news={news} />;
+  return (
+    <>
+      <ProfilePage />
+      <AdminDashBoard news={news} />
+    </>
+  );
 }

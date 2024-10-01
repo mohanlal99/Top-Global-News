@@ -7,6 +7,14 @@ import { NewsSchemaType } from "@/types";
 const MostPopularNews: React.FC<{ news: NewsSchemaType[] }> = ({ news }) => {
   const router = useRouter();
 
+  if (!news || news.length === 0) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <p>No news available for this category.</p>
+      </div>
+    );
+  }
+
   return (
     <section className="flex flex-col gap-3 md:gap-6">
       {news.slice(0, 20).map((item) => (

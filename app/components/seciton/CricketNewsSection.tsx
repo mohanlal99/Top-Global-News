@@ -8,7 +8,6 @@ const CricketNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({ news }) => {
   return (
     <section className="py-8 px-3">
       {/* Top Heading */}
-
       <div
         className="flex flex-col gap-6 items-center p-6 justify-center  shadow-md"
         id="cricket"
@@ -30,31 +29,31 @@ const CricketNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({ news }) => {
         <div className="relative col-span-2 overflow-hidden bg-gradient-to-t from-cyan-400 to-blue-500">
           <Link
             className="block w-full group"
-            href={`/news/${news[0].category}/${news[0].slug}`}
+            href={`/news/${news[0]?.category}/${news[0]?.slug}`}
           >
             {/* Image */}
             <Image
               removeWrapper
-              alt={news[0].title}
+              alt={news[0]?.title}
               className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
-              src={news[0].imageUrl || "/tgnews.png"}
+              src={news[0]?.imageUrl || "/tgnews.png"}
             />
 
             {/* Category Badge */}
             <div className="absolute top-4 left-4 bg-black bg-opacity-60 text-white text-sm px-3 py-1 rounded-full capitalize border border-white">
-              {news[0].category}
+              {news[0]?.category}
             </div>
 
             {/* Title and Updated Date */}
             <div className="absolute z-10 bottom-0 left-0 bg-gradient-to-t from-black to-transparent text-white p-6 w-full">
               <h3 className="text-xl font-semibold line-clamp-2 group-hover:underline">
-                {news[0].title}
+                {news[0]?.title}
               </h3>
               <div className="text-sm text-white mt-2">
-                {news[0].updatedAt && (
+                {news[0]?.updatedAt && (
                   <span className="font-medium ">
-                    {news[0].updatedAt
-                      ? `Published on ${new Date(news[0].updatedAt).toDateString()}`
+                    {news[0]?.updatedAt
+                      ? `Published on ${new Date(news[0]?.updatedAt).toDateString()}`
                       : ""}
                   </span>
                 )}
@@ -67,28 +66,28 @@ const CricketNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({ news }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2  col-span-3 gap-2">
           {news.slice(1, 5).map((item) => (
             <Link
-              key={item._id}
+              key={item?._id}
               className="group flex items-center overflow-hidden dark:bg-gray-900 border border-gray-300 dark:border-gray-700  transition-shadow duration-300"
-              href={`/news/${item.category}/${item.slug}`}
+              href={`/news/${item?.category}/${item?.slug}`}
             >
               <Image
                 isBlurred
                 isZoomed
                 removeWrapper
-                alt={item.title}
+                alt={item?.title}
                 className="object-cover h-full w-full "
                 radius="none"
-                src={item.imageUrl || "/tgnews.png"}
+                src={item?.imageUrl || "/tgnews.png"}
               />
               <div className="absolute z-10 bottom-0 left-0 bg-gradient-to-tr dark:from-black from-white to-transparent text-default-900 p-2 w-full">
                 <h3 className="text-xl font-semibold line-clamp-2 group-hover:underline">
-                  {item.title}
+                  {item?.title}
                 </h3>
                 <div className="text-sm text-gray-300 mt-2">
-                  {item.updatedAt && (
+                  {item?.updatedAt && (
                     <span className="font-medium text-default-900 ">
-                      {item.updatedAt
-                        ? `Published on ${new Date(item.updatedAt).toDateString()}`
+                      {item?.updatedAt
+                        ? `Published on ${new Date(item?.updatedAt).toDateString()}`
                         : ""}
                     </span>
                   )}

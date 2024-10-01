@@ -14,9 +14,12 @@ import SeeMoreButton from "../SeeMoreButton";
 
 import { NewsSchemaType } from "@/types";
 import { title } from "@/components/primitives";
+import NotFound from "@/app/not-found";
 
 const IndiaNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({ news }) => {
   const router = useRouter();
+
+  if (!news) return <NotFound />;
 
   return (
     <section className="mb-6">
@@ -38,7 +41,7 @@ const IndiaNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({ news }) => {
               removeWrapper
               alt={"inida news Image"}
               className="col-span-1 md:col-span-3  w-fit h-fit md:h-72 objectcover "
-              src={news[0].imageUrl || "/tgnews.png"}
+              src={news[0]?.imageUrl || "/tgnews.png"}
             />
           </CardHeader>
 
@@ -46,13 +49,13 @@ const IndiaNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({ news }) => {
             {/* Mobile View: Image on the left, title on the right */}
             <div className="gap-6 flex items-center">
               <span className=" bg-secondary-100 text-md rounded-md font-medium capitalize w-fit px-3 py-1 ">
-                {news[0].category}
+                {news[0]?.category}
               </span>
-              <span>{new Date(String(news[0].updatedAt)).toDateString()}</span>
+              <span>{new Date(String(news[0]?.updatedAt)).toDateString()}</span>
             </div>
             <div className="flex flex-col justify-center">
               <h1 className={`${title({ size: "lg" })} font-bold`}>
-                {news[0].title}
+                {news[0]?.title}
               </h1>
             </div>
 

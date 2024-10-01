@@ -18,7 +18,7 @@ export const fetchNewsByCategory = async (category: CategoryType) => {
     const { news }: { news: NewsSchemaType[] } = await response.json();
 
     return news || [];
-  } catch (error) {
+  } catch {
     return [];
   }
 };
@@ -45,7 +45,7 @@ export const fetchNewsBySlug = async ({
     const { news } = await response.json();
 
     return news;
-  } catch (error) {
+  } catch {
     return [];
   }
 };

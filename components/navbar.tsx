@@ -12,6 +12,8 @@ import {
 } from "@nextui-org/navbar";
 import NextLink from "next/link";
 
+import NavbarProfile from "./NavbarProfile";
+
 import SocialMediaIcon from "@/app/components/SocialMediaIcon";
 import { Logo, SearchIcon } from "@/components/icons";
 import { ThemeSwitch } from "@/components/theme-switch";
@@ -70,14 +72,7 @@ export const Navbar = () => {
 
         <NavbarContent className=" basis-1 pl-4" justify="end">
           <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-          <NavbarItem className="hidden sm:flex">
-            <Link
-              className={`px-4 py-1 rounded-md text-base font-medium md:w-auto border-2 text-default-900`}
-              href={"/sign-in"}
-            >
-              Sign In
-            </Link>
-          </NavbarItem>
+          <NavbarProfile />
           <ThemeSwitch />
           <NavbarMenuToggle />
         </NavbarContent>

@@ -9,12 +9,11 @@ import RightSection from "./seciton/RightSection";
 import SportsNewsSection from "./seciton/SportsNewsSection";
 import WebShortsSection from "./seciton/WebShortsSection";
 
-import Loader from "@/components/Loader";
-import { CategoryType, NewsSchemaType } from "@/types";
+import { useHomeNews } from "@/context/HomeContext";
 
-const HomePage: React.FC<{
-  news: { [key in CategoryType]: NewsSchemaType[] };
-}> = ({ news }) => {
+const HomePage = () => {
+  const news = useHomeNews();
+
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
 
@@ -22,11 +21,12 @@ const HomePage: React.FC<{
       document.documentElement.style.scrollBehavior = "auto";
     };
   }, []);
-  if (!news) return <Loader />;
+
+  if (!news) return null;
 
   return (
     <div className="flex flex-col gap-6 px- space-y-3">
-      <FreshNewsSection news={news.trending} />
+      <FreshNewsSection news={news?.trending} />
       <section className="grid gap-2 grid-cols-1 md:grid-cols-6">
         <div className="col-span-1 md:col-span-4">
           <NewsSection news={news} />
@@ -36,9 +36,9 @@ const HomePage: React.FC<{
         </div>
       </section>
 
-      <EnvironmentNewsSection news={news.environment} />
-      <SportsNewsSection news={news.sports} />
-      <CricketNewsSection news={news.cricket} />
+      <EnvironmentNewsSection news={news?.environment} />
+      <SportsNewsSection news={news?.sports} />
+      <CricketNewsSection news={news?.cricket} />
       <WebShortsSection news={news} />
     </div>
   );

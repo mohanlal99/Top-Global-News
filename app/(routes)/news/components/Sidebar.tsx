@@ -20,7 +20,7 @@ const Sidebar: React.FC<SidebarProps> = ({ newsData }) => {
   const currentCategory = pathName.split("/")[2];
 
   return (
-    <aside className="sticky top-0 px-2 rounded-lg dark:bg-gray-900">
+    <aside className="sticky max-w-sm top-0 px-2 rounded-lg dark:bg-gray-900">
       {categories
         .filter(
           (category) =>

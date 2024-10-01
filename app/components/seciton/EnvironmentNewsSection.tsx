@@ -10,11 +10,7 @@ import { NewsSchemaType } from "@/types";
 const EnvironmentNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({
   news,
 }) => {
-  // First article as featured news
-  const featuredNews = news[0];
-  // Rest of the articles
   const router = useRouter();
-  const remainingNews = news.slice(1, 4); // Pick 3 more for the lower section
 
   return (
     <div className="py-6">
@@ -38,25 +34,25 @@ const EnvironmentNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({
           <CardBody>
             <Link
               className="block h-full w-full"
-              href={`/news/${featuredNews.category}/${featuredNews.slug}`}
+              href={`/news/${news[0]?.category}/${news[0]?.slug}`}
             >
               <Image
                 removeWrapper
-                alt={featuredNews.title}
+                alt={news[0]?.title}
                 className="h-full w-full object-cover rounded-md"
-                src={featuredNews.imageUrl || "/tgnews.png"}
+                src={news[0]?.imageUrl || "/tgnews.png"}
               />
               <div className="z-10 absolute inset-0  rounded-md p-6 flex flex-col justify-end">
                 <span className="border bg-slate-100 dark:bg-slate-900 text-xs capitalize w-fit px-3 py-1 ">
-                  {featuredNews.category}
+                  {news[0]?.category}
                 </span>
                 <span className="font-medium text-default-900 ">
-                  {featuredNews.updatedAt
-                    ? `Published on ${new Date(featuredNews.updatedAt).toDateString()}`
+                  {news[0]?.updatedAt
+                    ? `Published on ${new Date(news[0]?.updatedAt).toDateString()}`
                     : ""}
                 </span>
                 <h3 className="font-bold text-2xl mt-1 md:w-10/12">
-                  {featuredNews.title}
+                  {news[0]?.title}
                 </h3>
               </div>
             </Link>
@@ -65,26 +61,26 @@ const EnvironmentNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({
 
         {/* Other News Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {remainingNews.map((item, index) => (
+          {news.slice(1, 9).map((item, index) => (
             <Link
               key={index}
               className="text-sm "
-              href={`/news/${item.category}/${item.slug}`}
+              href={`/news/${item?.category}/${item?.slug}`}
             >
               <div className="grid grid-cols-3 gap-2 hover:shadow-lg justify-between dark:bg-gray-900 bg-default-300 rounded-md p-2 pt-3">
                 <Image
                   removeWrapper
-                  alt={item.title}
+                  alt={item?.title}
                   className="w-full h-auto  rounded-md object-cover mb-2"
                   height={70}
-                  src={item.imageUrl || "/tgnews.png"}
+                  src={item?.imageUrl || "/tgnews.png"}
                 />
                 <div className="col-span-2 flex flex-col justify-">
                   <h3 className="text-sm font-medium mb-1 line-clamp-2 overflow-hidden">
-                    {item.title}
+                    {item?.title}
                   </h3>
                   <span className="bg-blue-600 w-fit text-white text-xs capitalize px-2 py-1">
-                    {item.category}
+                    {item?.category}
                   </span>
                 </div>
               </div>

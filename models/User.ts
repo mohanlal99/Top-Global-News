@@ -5,9 +5,8 @@ interface UserSchemaType {
   email: string;
   password: string;
   username: string;
-  phone: string;
   isAdmin: boolean;
-  role: "owner" | "admin" | "viewer";
+  role: "owner" | "admin" | "user";
 }
 
 const UserSchema = new Schema<UserSchemaType>(
@@ -16,11 +15,10 @@ const UserSchema = new Schema<UserSchemaType>(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     username: { type: String, required: true, unique: true },
-    phone: { type: String, required: true, unique: true },
     isAdmin: { type: Boolean, default: false },
-    role: { type: String, default: "viewer" },
+    role: { type: String, default: "user" },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const User =

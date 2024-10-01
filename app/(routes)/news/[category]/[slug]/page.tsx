@@ -39,8 +39,26 @@ export async function generateMetadata({ params }: { params: Params }) {
 
 const NewsBySlug = async ({ params }: { params: Params }) => {
   const { category, slug } = params;
-  const newsInfo: NewsSchemaType = await getNewsBySlug({ category, slug });
+  let newsInfo: NewsSchemaType | null;
+
+  try {
+    newsInfo = await getNewsBySlug({ category, slug });
+  } catch {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <p>Failed to load news. Please try again later.</p>
+      </div>
+    );
+  }
   const news: NewsSchemaType[] = await getNewsByCategory(category);
+
+  if (!news || news.length === 0 || !newsInfo) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <p>No news available for this category.</p>
+      </div>
+    );
+  }
 
   return (
     <NewsProvider initialNews={news}>

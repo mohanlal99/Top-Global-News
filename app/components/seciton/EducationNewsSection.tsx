@@ -35,9 +35,9 @@ const EducationNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({
             </h1>
             <Image
               isBlurred
-              alt={news[0].title}
+              alt={news[0]?.title}
               className="w-full h-40 md:h-64 object-cover mb-3"
-              src={news[0].imageUrl || "/tgnews.png"}
+              src={news[0]?.imageUrl || "/tgnews.png"}
             />
 
             <Button
@@ -45,7 +45,7 @@ const EducationNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({
               color="secondary"
               variant="bordered"
               onClick={() =>
-                router.push(`/news/${news[0].category}/${news[0].slug}`)
+                router.push(`/news/${news[0]?.category}/${news[0]?.slug}`)
               }
             >
               Read More <BookOpen />
@@ -63,18 +63,18 @@ const EducationNewsSection: React.FC<{ news: NewsSchemaType[] }> = ({
                   alt={item.title}
                   className="w-full mb-2 h-40 rounded object-cover"
                   height={200}
-                  src={item.imageUrl || "/tgnews.png"}
+                  src={item?.imageUrl || "/tgnews.png"}
                   width={400}
                 />
                 <h2 className="text-lg line-clamp-2 h-fit font-semibold mb-2">
-                  {item.title}
+                  {item?.title}
                 </h2>
                 <Button
                   className="flex w-fit dark:text-lime-600 items-center"
                   color="secondary"
                   variant="bordered"
                   onClick={() =>
-                    router.push(`/news/${item.category}/${item.slug}`)
+                    router.push(`/news/${item?.category}/${item?.slug}`)
                   }
                 >
                   Read More <BookOpen />

@@ -2,21 +2,24 @@ import HomePage from "./components/HomePage";
 import HomeSection from "./components/HomeSection";
 
 import Footer from "@/components/Footer";
-import Loader from "@/components/Loader";
 import { Navbar } from "@/components/navbar";
+import { HomeProvider } from "@/context/HomeContext";
 import { getAllNews } from "@/lib/fetchNews";
 
 export default async function Home() {
   const news = await getAllNews();
+
   return (
-    <section>
-      {news && news.trending.length !== 0 && (
-        <HomeSection news={news.trending[0]} />
-      )}
-      <Navbar />
-      <HomePage news={news} />
-      <Footer />
-    </section>
+    <HomeProvider news={news}>
+      <section>
+        {news && news.trending.length > 0 && (
+          <HomeSection news={news.trending[0]} />
+        )}
+        <Navbar />
+        <HomePage />
+        <Footer />
+      </section>
+    </HomeProvider>
   );
 }
 

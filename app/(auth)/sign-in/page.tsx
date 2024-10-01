@@ -1,11 +1,7 @@
-import React from 'react'
+import SignUpForm from "./components/SingUpTabs";
 
-const SignIn = () => {
-  return (
-    <div>
-      signin
-    </div>
-  )
-}
+const Authtication = () => {
+  return <SignUpForm />;
+};
 
-export default SignIn
+export default Authtication;

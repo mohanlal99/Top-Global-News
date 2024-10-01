@@ -25,7 +25,7 @@ export async function GET(req: NextRequest, { params }: { params: Params }) {
     const news = await NewsModel.find().limit(50).sort({ createdAt: -1 });
 
     return NextResponse.json({ news }, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

@@ -1,8 +1,5 @@
 "use client";
 
-import NotFound from "@/app/not-found";
-import { title } from "@/components/primitives";
-import { useNews } from "@/context/NewsContext";
 import {
   BreadcrumbItem,
   Breadcrumbs,
@@ -14,31 +11,39 @@ import {
 } from "@nextui-org/react";
 import { ArrowDownLeftFromSquare, LoaderIcon } from "lucide-react";
 import { useState } from "react";
+
+import { useNews } from "@/context/NewsContext";
+import { title } from "@/components/primitives";
 const NewsList: React.FC = () => {
   const news = useNews();
   const [visibleCount, setVisibleCount] = useState<number>(20);
 
-  if (!news) return <NotFound />;
-
+  if (!news || news.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <p>No news available for this category.</p>
+      </div>
+    );
+  }
   const handleShowMore = () => {
     setVisibleCount((prevCount) => prevCount + 10);
   };
 
   return (
     <>
-      <section className="w-full mx-auto px-1 sm:px-3 flex gap-2 flex-col dark:bg-gray-900">
-        {news && (
+      <section className="w-full mx-auto px-1 sm:px-3 flex gap-2 flex-col dark:bg-gray-900 rounded-md">
+        {news && news !== undefined && (
           <h2
             className={title({
               size: "lg",
               color: "violet",
-              className: "capitalize text-center",
+              className: "capitalize text-center py-6",
             })}
           >
             {news[0]?.category} News
           </h2>
         )}
-        <Breadcrumbs>
+        <Breadcrumbs className="mb-3">
           <BreadcrumbItem>
             <Link href="/">Home</Link>
           </BreadcrumbItem>
@@ -55,7 +60,7 @@ const NewsList: React.FC = () => {
             <LoaderIcon className="animate-spin text-primary-500 w-8 h-8" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 mx-auto gap-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 mx-auto gap-7 mb-6">
             {news.slice(0, visibleCount).map((item, index) => (
               <Card key={index}>
                 <Link

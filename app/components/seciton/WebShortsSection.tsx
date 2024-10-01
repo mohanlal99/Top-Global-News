@@ -59,7 +59,7 @@ const WebShortsSection: React.FC<{
 
   const handleNext = () => {
     const currentIndex = cricketNews.findIndex(
-      (item) => item._id === currentStory?._id,
+      (item) => item?._id === currentStory?._id,
     );
     const nextIndex = (currentIndex + 1) % cricketNews.length;
 
@@ -69,7 +69,7 @@ const WebShortsSection: React.FC<{
 
   const handlePrevious = () => {
     const currentIndex = cricketNews.findIndex(
-      (item) => item._id === currentStory?._id,
+      (item) => item?._id === currentStory?._id,
     );
     const previousIndex =
       (currentIndex - 1 + cricketNews.length) % cricketNews.length;
@@ -97,9 +97,9 @@ const WebShortsSection: React.FC<{
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1">
         {cricketNews.slice(0, 8).map((item) => (
           <Card
-            key={item._id}
+            key={item?._id}
             className="border-none h-[500px] bg-gradient-to-tr from-pink-500 to-yellow-500 shadow-lg"
-            onClick={() => router.push(`/news/${item.category}/${item.slug}`)}
+            onClick={() => router.push(`/news/${item?.category}/${item?.slug}`)}
           >
             <CardBody
               className="relative cursor-pointer h-full items-center flex justify-center"
@@ -108,16 +108,16 @@ const WebShortsSection: React.FC<{
               <Image
                 isBlurred
                 isZoomed
-                alt={item.title}
+                alt={item?.title}
                 className="rounded-lg object-contain w-full"
-                src={item.imageUrl}
+                src={item?.imageUrl}
               />
               <div className="absolute bottom-0 text-white left-0 p-2  z-10 m-3 backdrop-blur-xl">
                 <p className="px-2 mt-2 bg-gradient-to-r from-black to-violet-950 w-fit capitalize">
-                  {item.category}
+                  {item?.category}
                 </p>
                 <p className="text-sm font-semibold line-clamp-2">
-                  {item.title}
+                  {item?.title}
                 </p>
               </div>
             </CardBody>
@@ -143,7 +143,7 @@ const WebShortsSection: React.FC<{
                 alt={currentStory.title}
                 className="w-full h-fit object-cover -z-10 "
                 radius="none"
-                src={currentStory.imageUrl || '/tgnews.png'}
+                src={currentStory.imageUrl || "/tgnews.png"}
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50">

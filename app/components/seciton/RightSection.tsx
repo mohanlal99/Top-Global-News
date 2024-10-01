@@ -14,7 +14,7 @@ const RightSection: React.FC<{
   const router = useRouter();
 
   // Handle case when no news is available
-  if (!news) return <div>No news found</div>;
+  if (!news) return null;
 
   // Ensure we are accessing valid news data; map and check if news exists for that category
   const newsItem = categories
@@ -33,7 +33,7 @@ const RightSection: React.FC<{
             <li key={index} className="">
               <Link
                 className="flex items-center gap-2"
-                href={`/news/${item.category}/${item.slug}`}
+                href={`/news/${item?.category}/${item?.slug}`}
               >
                 {/* Timestamp */}
 

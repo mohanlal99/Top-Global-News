@@ -15,13 +15,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     "cricket",
     "business",
   ];
-  const categories2: CategoryType[] = [
-    "political",
-    "world",
-    "trending",
-    "education",
-    "environment",
-  ];
+  const categories2: CategoryType[] = ["political", "world", "environment"];
 
   const [newsData, newsData2] = await Promise.all([
     getMultipleCategoriesNews(categories),
@@ -40,14 +34,15 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
               <section className="mt-6 text-center">Advertisement</section>
             </div>
             {/* Additional Content Below Main Content */}
-            <div className="mt-6">
-              Additional Content Below Main Content 
-            </div>
+            <div className="mt-6">Additional Content Below Main Content</div>
           </section>
 
           {/* Right Sidebar */}
           <aside className="lg:col-span-1">
-            <div className="w-full">
+            <div className="w-full flex gap-2 flex-col justify-between items-center ">
+              <Sidebar newsData={newsData} />
+            </div>
+            <div className="w-full flex gap-2 flex-col justify-between items-center ">
               <Sidebar newsData={newsData2} />
             </div>
           </aside>

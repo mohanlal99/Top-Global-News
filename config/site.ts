@@ -6,14 +6,7 @@ export const siteConfig = {
   description:
     "Get the latest on Top Global News – featuring today's top headlines, breaking news from India, global updates, sports coverage, political analysis, health reports, and more. Stay updated with comprehensive news and in-depth articles on everything that matters.",
   keywords: `
-    today news, top news, live news, global news, hindi news, india news, breaking news, 
-    world news, international news, latest news, sports news, political news, health news, 
-    technology news, entertainment news, business news, economy news, education news, 
-    environmental news, cultural news, science news, world breaking news, 
-    breaking world news today, latest world breaking news, international news headlines, 
-    world news update, world news online, latest international news, trending news, 
-    current events, daily news, news articles, news reports, top headlines, 
-    global updates, world affairs, world politics, global economy
+    today news, top news, live news, global news, hindi news, india news, breaking news, world news, international news, latest news, sports news, political news, health news, technology news, entertainment news, business news, economy news, education news, environmental news, cultural news, science news, world breaking news, breaking world news today, latest world breaking news, international news headlines, world news update, world news online, latest international news, trending news, current events, daily news, news articles, news reports, top headlines, global updates, world affairs, world politics, global economy
   `,
   url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
   image: "/tgnews.png",
