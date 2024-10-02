@@ -17,13 +17,16 @@ export const saveImageAWS = async (image: File) => {
     );
 
     if (!response.ok) {
-      return NextResponse.json({ message: "image saving in error" });
+      return NextResponse.json({ error: "image saving in error" });
     }
     const result = await response.json();
 
+
     return result;
   } catch (error) {
-    return NextResponse.json({ message: error });
+    return NextResponse.json({
+      error: String(error) || "something went worng",
+    });
   }
 };
 

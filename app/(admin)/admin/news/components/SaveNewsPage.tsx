@@ -81,8 +81,13 @@ const SaveNewsPage: React.FC = () => {
         setImgLoading(true);
         const res = await saveImageAWS(selectedImage);
 
+        if (res?.error) {
+          setMessage(res?.error);
+
+          return;
+        }
         setNewsData({ ...newsData, imageUrl: res?.response?.Location });
-        setMessage("Image Upload Success");
+        setMessage(res?.message || "Image Upload Success");
       } else {
         setMessage("No image selected");
       }

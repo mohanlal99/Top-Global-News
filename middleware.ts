@@ -1,28 +1,41 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { verifyToken } from "./lib/action/UserAction";
+import { verifyToken } from "./lib/action/UserAction"; // Assuming this function is implemented to verify the token
+
+const allowedOrigin = "https://topglobalnews.in";
 
 export function middleware(request: NextRequest) {
-  // Initialize the response object
-  const response = NextResponse.next();
+  // Handle preflight requests for CORS
+  if (request.method === "OPTIONS") {
+    const response = new NextResponse(null, { status: 204 });
 
-  // CORS configuration: Apply only to API routes
-  if (request.nextUrl.pathname.startsWith("/api")) {
+    response.headers.set("Access-Control-Allow-Origin", allowedOrigin);
     response.headers.set(
-      "Access-Control-Allow-Origin",
-      "https://topglobalnews.in",
+      "Access-Control-Allow-Methods",
+      "GET, POST, OPTIONS, PUT, DELETE",
     );
-    response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     response.headers.set(
       "Access-Control-Allow-Headers",
       "Content-Type, Authorization",
     );
+    response.headers.set("Access-Control-Allow-Credentials", "true");
 
-    // Handle preflight requests for CORS
-    if (request.method === "OPTIONS") {
-      return new NextResponse(null, { status: 204 });
-    }
+    return response;
   }
+
+  // Initialize response for non-OPTIONS requests
+  const response = NextResponse.next();
+
+  response.headers.set("Access-Control-Allow-Origin", allowedOrigin);
+  response.headers.set(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, DELETE",
+  );
+  response.headers.set(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization",
+  );
+  response.headers.set("Access-Control-Allow-Credentials", "true");
 
   // Extract token from cookies or authorization header
   const token =

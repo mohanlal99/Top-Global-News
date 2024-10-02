@@ -61,7 +61,7 @@ export const saveSingUpData = async (validatedData: UserDataType) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(validatedData),
-      },
+      }
     );
 
     if (!res.ok) {
@@ -70,8 +70,12 @@ export const saveSingUpData = async (validatedData: UserDataType) => {
     const response = await res.json();
 
     return response;
-  } catch {
-    return { success: false, error: "Sing-up Something went wrong" };
+  } catch (error) {
+    return {
+      success: false,
+      error:
+        error instanceof Error ? error.message : "Sign-up Something went wrong",
+    };
   }
 };
 export const checkSignInDetails = async (signInData: SignInDataType) => {
@@ -84,7 +88,7 @@ export const checkSignInDetails = async (signInData: SignInDataType) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(signInData),
-      },
+      }
     );
 
     if (!res.ok) {
@@ -99,8 +103,12 @@ export const checkSignInDetails = async (signInData: SignInDataType) => {
     const response = await res.json();
 
     return response; // Return the token and user data
-  } catch {
-    return { error: "Sign-in Something went wrong", success: false };
+  } catch (error) {
+    return {
+      error:
+        error instanceof Error ? error.message : "Sign-in Something went wrong",
+      success: false,
+    };
   }
 };
 
@@ -117,7 +125,7 @@ export const fetchUserDetails = async ({ token }: { token: string }) => {
         headers: {
           Authorization: `Bearer ${token}`, // Pass the token in the headers
         },
-      },
+      }
     );
 
     if (!res.ok) {

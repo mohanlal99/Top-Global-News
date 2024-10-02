@@ -79,12 +79,12 @@ const ProfilePage: React.FC = () => {
               src="https://i.pinimg.com/736x/34/b7/b2/34b7b24a81b35eb6c3f6421e8a20ba9a.jpg"
             />
             <div className="flex flex-col space-y-2">
-              <h2 className="text-2xl font-semibold ">{user.username}</h2>
-              <p className="text-sm text-gray-600">Email: {user.email}</p>
-              <p className="text-sm text-gray-600">Role: {user.role}</p>
-              {user.admin && (
+              <h2 className="text-2xl font-semibold ">{user?.username}</h2>
+              <p className="text-sm text-gray-600">Email: {user?.email}</p>
+              <p className="text-sm text-gray-600">Role: {user?.role}</p>
+              {user?.admin && (
                 <p className="text-sm text-gray-600">
-                  Admin: {user.admin ? "Yes" : "No"}
+                  Admin: {user?.admin ? "Yes" : "No"}
                 </p>
               )}
             </div>

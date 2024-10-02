@@ -67,7 +67,6 @@ const SignUpPage: React.FC<{ onSignUpSuccess: () => void }> = ({
 
     if (result.errors) {
       setState({ ...state, loading: false, errors: result.errors });
-
       return;
     }
 
@@ -180,8 +179,8 @@ const SignUpPage: React.FC<{ onSignUpSuccess: () => void }> = ({
 
         <Button
           fullWidth
-          isDisabled={state.loading}
-          isLoading={state.loading}
+          isDisabled={state?.loading}
+          isLoading={state?.loading}
           type="submit"
         >
           Sign Up
