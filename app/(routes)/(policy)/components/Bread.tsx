@@ -11,7 +11,7 @@ const BreadPage = () => {
 
   return (
     <section className="pb-3">
-      <Breadcrumbs separator="/">
+      <Breadcrumbs >
         <BreadcrumbItem>
           <Link
             className={

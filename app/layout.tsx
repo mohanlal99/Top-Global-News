@@ -96,33 +96,6 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head>
-        {/* PopAds Script */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(){
-                var e=window,p="f064980abff894a9a368fc0db61de4ad",
-                q=[["siteId",53-108-20+5137310],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],
-                v=["d3d3LmludGVsbGlwb3B1cC5jb20vY21vdGlvbi5taW4uY3Nz","ZDNtcjd5MTU0ZDJxZzUuY2xvdWRmcm9udC5uZXQvdHZOU1JaL21qc29uTWFzay5taW4uanM="],
-                l=-1,j,y,h=function(){
-                  clearTimeout(y);l++;if(v[l]&&!(1753202307000<(new Date).getTime()&&1<l)){
-                    j=e.document.createElement("script");j.type="text/javascript";j.async=!0;
-                    var k=e.document.getElementsByTagName("script")[0];
-                    j.src="https://"+atob(v[l]);
-                    j.crossOrigin="anonymous";j.onerror=h;j.onload=function(){
-                      clearTimeout(y);e[p.slice(0,16)+p.slice(0,16)]||h()
-                    };y=setTimeout(h,5E3);k.parentNode.insertBefore(j,k)
-                  }
-                };
-                if(!e[p]){
-                  try{Object.freeze(e[p]=q)}catch(e){}h()
-                }
-              })();
-            `,
-          }}
-          data-cfasync="false"
-          type="text/javascript"
-        />
       </head>
 
       <body

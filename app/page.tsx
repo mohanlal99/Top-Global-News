@@ -5,9 +5,11 @@ import Footer from "@/components/Footer";
 import { Navbar } from "@/components/navbar";
 import { HomeProvider } from "@/context/HomeContext";
 import { getAllNews } from "@/lib/fetchNews";
+import NewsApiSection from "./components/seciton/NewsApiSection";
 
 export default async function Home() {
   const news = await getAllNews();
+
 
   return (
     <HomeProvider news={news}>
@@ -16,6 +18,7 @@ export default async function Home() {
           <HomeSection news={news.trending[0]} />
         )}
         <Navbar />
+        <NewsApiSection/>
         <HomePage />
         <Footer />
       </section>
