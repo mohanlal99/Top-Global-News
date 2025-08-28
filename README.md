@@ -1,53 +1,64 @@
-# Next.js & NextUI Template
+# 📰 Top Global News
 
-This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
+A modern **news website** built with **Next.js, Tailwind CSS, and MongoDB**, featuring multiple news categories, **Google authentication**, and an **admin dashboard** for content management. The platform is designed to deliver the latest updates with a secure backend for **news management** and **role-based access control**.
 
-[Try it on CodeSandbox](https://githubbox.com/nextui-org/next-app-template)
+🔗 **Live Website:** [topglobalnews.in](https://topglobalnews.in)
 
-## Technologies Used
+---
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [NextUI v2](https://nextui.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+## 🚀 Features
 
-## How to Use
+- 🌍 Multiple news categories (World, Technology, Sports, Business, etc.)  
+- 🛠️ **Admin Dashboard** to manage and publish news articles  
+- 📱 Fully responsive and mobile-friendly design  
+- ⚡ SEO-optimized with Next.js App Router  
+- 🔒 Secure backend integration for user and content management  
 
-### Use the template with create-next-app
+---
 
-To create a new project based on this template using `create-next-app`, run the following command:
+## 🛠️ Tech Stack
 
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
+**Frontend:**  
+- Next.js 14 (App Router)  
+- Tailwind CSS  
+- Next/UI Components  
+
+**Backend:**  
+- Next.js Api Router
+- MongoDB (Mongoose)  
+
+**Authentication:**  
+- JWT for secure role-based access  
+
+**Deployment & Tools:**  
+- Vercel (Frontend Hosting)  
+- GitHub (Version Control)  
+
+---
+
+## 📂 Project Structure
+```js
+TopGlobalNews/
+├── app/ # Next.js App Router pages
+├── components/ # Reusable UI components
+├── lib/ # Utility functions & helpers
+├── models/ # MongoDB models
+├── public/ # Static assets
+├── styles/ # Global styles (Tailwind configs)
+
 ```
 
-### Install dependencies
+## 📸 Screenshots
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+![Home Page](./public/screenshots/home.png)
+*Home Page showing top global headlines.*
 
-```bash
-npm install
-```
+![Article View](./public/screenshots/article.png)
+*Detailed article view with full content.*
 
-### Run the development server
+![Admin Dashboard](./public/screenshots/admin.png)
+*Role-based admin panel secured via JWT.*
 
-```bash
-npm run dev
-```
+![Mobile View](./public/screenshots/mobile.png)
+*Fully responsive mobile interface.*
 
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@nextui-org/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
