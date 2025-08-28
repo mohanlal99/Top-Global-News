@@ -59,6 +59,6 @@ TopGlobalNews/
 ![Admin Dashboard](./public/screenshots/admin.png)
 *Role-based admin panel secured via JWT.*
 
-![Mobile View](./public/screenshots/mobile.png)
+![Mobile View](./public/screenshots/mobail.png)
 *Fully responsive mobile interface.*
 
