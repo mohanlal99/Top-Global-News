@@ -1,6 +1,6 @@
 # 📰 Top Global News
 
-A modern **news website** built with **Next.js, Tailwind CSS, and MongoDB**, featuring multiple news categories, **Google authentication**, and an **admin dashboard** for content management. The platform is designed to deliver the latest updates with a secure backend for **news management** and **role-based access control**.
+A modern **news website** built with **Next.js, Tailwind CSS, and MongoDB**, featuring multiple news categories, **authentication**, and an **admin dashboard** for content management. The platform is designed to deliver the latest updates with a secure backend for **news management** and **role-based access control**.
 
 🔗 **Live Website:** [topglobalnews.in](https://topglobalnews.in)
 
