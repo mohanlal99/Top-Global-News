@@ -4,7 +4,7 @@ A modern **news website** built with **Next.js, Tailwind CSS, and MongoDB**, fea
 
 🔗 **Live Website:** [topglobalnews.in](https://topglobalnews.in)
 
----
+--- 
 
 ## 🚀 Features
 
